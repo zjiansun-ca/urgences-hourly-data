@@ -5,7 +5,6 @@ on:
     - cron: "58 * * * *"   # Runs at HH:58 UTC
   workflow_dispatch:
 
-
 jobs:
   download:
     runs-on: ubuntu-latest
@@ -29,6 +28,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/
-          git commit -m "Hourly data update" || echo "No changes"
+          git add data/ hashes/
+          git commit -m "Hourly data update" || echo "No changes to commit"
           git push
