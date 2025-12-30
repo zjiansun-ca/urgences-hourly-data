@@ -1,5 +1,8 @@
 name: Hourly ER Data Download
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "58 * * * *"   # Runs at HH:58 UTC
