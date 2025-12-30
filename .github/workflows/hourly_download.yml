@@ -1,0 +1,34 @@
+name: Hourly ER Data Download
+
+on:
+  schedule:
+    - cron: "58 * * * *"   # Runs at HH:58 UTC
+  workflow_dispatch:
+
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run downloader
+        run: python download_csv.py
+
+      - name: Commit and push data
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add data/
+          git commit -m "Hourly data update" || echo "No changes"
+          git push
