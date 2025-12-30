@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "58 * * * *"   # Runs at HH:58 UTC
+    - cron: "*/30 * * * *"  # Runs at HH:58 UTC
   workflow_dispatch:
 
 jobs:
