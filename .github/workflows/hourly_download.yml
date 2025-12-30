@@ -31,6 +31,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add data/ hashes/
+          git add -A
           git commit -m "Hourly data update" || echo "No changes to commit"
           git push
