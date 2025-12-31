@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: "*/30 * * * *"  # Runs at HH:58 UTC
+    - cron: "*/10 * * * *"  # Runs every 10 minutes
   workflow_dispatch:
 
 jobs:
@@ -32,5 +32,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add -A
-          git commit -m "Half hour data update" || echo "No changes to commit"
+          git commit -m "10 minute data update" || echo "No changes to commit"
           git push
